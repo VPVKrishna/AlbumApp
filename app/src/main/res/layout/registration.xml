@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header_id"
+        layout="@layout/header_menu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="50dp">
+
+        <EditText
+            android:id="@+id/et_sign_up_fname"
+            style="@style/et_sign_up"
+            android:hint="First Name"
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/et_sign_up_mname"
+            style="@style/et_sign_up"
+            android:hint="Middle Name"
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_sign_up_fname" />
+
+        <EditText
+            android:id="@+id/et_sign_up_lname"
+            style="@style/et_sign_up"
+            android:hint="Last Name"
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_sign_up_mname" />
+
+        <EditText
+            android:id="@+id/et_sign_up_email"
+            style="@style/et_sign_up"
+            android:hint="Email Address(Username)"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_sign_up_lname" />
+
+        <EditText
+            android:id="@+id/et_sign_up_pwd"
+            style="@style/et_sign_up"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_sign_up_email" />
+
+        <EditText
+            android:id="@+id/et_sign_up_cfm_pwd"
+            style="@style/et_sign_up"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_sign_up_pwd" />
+
+        <EditText
+            android:id="@+id/et_sign_up_dob"
+            style="@style/et_sign_up"
+            android:hint="Date of Birth"
+            android:inputType="date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_sign_up_cfm_pwd" />
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg"
+            android:layout_alignParentBottom="true"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:gravity="center" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

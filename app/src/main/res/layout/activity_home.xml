@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/header_id"
+        layout="@layout/header_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_home"
+        android:layout_below="@+id/header_id"
+        android:layout_width="wrap_content"
+        android:src="@drawable/home_image"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/btn_create_proj"
+        android:layout_width="match_parent"
+        android:text="Create Project"
+        android:layout_below="@+id/iv_home"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_my_proj"
+        android:layout_width="match_parent"
+        android:text="My Project"
+        android:layout_below="@+id/btn_create_proj"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

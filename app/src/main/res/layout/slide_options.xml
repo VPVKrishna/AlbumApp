@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/iv_profile"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/profile_pic"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:onClick="editProfile"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="wrap_content"
+        android:text="Welcome"
+        android:layout_below="@+id/iv_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:text="Guest"
+        android:layout_below="@+id/tv_welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_option_one"
+        android:layout_width="wrap_content"
+        android:background="@drawable/option_one"
+        android:layout_below="@+id/tv_username"
+        android:text="Create Project"
+        android:paddingLeft="@dimen/pad_options_left"
+        android:clickable="true"
+        android:onClick="createProject"
+        android:layout_marginTop="@dimen/pad_options_top"
+        android:gravity="center_vertical"
+        android:textColor="@color/options_color"
+        android:textSize="@dimen/ts_options"
+        android:textStyle="bold"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_option_two"
+        android:layout_width="wrap_content"
+        android:background="@drawable/option_two"
+        android:layout_below="@+id/tv_option_one"
+        android:text="My Orders"
+        android:clickable="true"
+        android:onClick="myOrders"
+        android:paddingLeft="@dimen/pad_options_left"
+        android:layout_marginTop="@dimen/pad_options_top"
+        android:gravity="center_vertical"
+        android:textColor="@color/options_color"
+        android:textSize="@dimen/ts_options"
+        android:textStyle="bold"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_option_three"
+        android:layout_width="wrap_content"
+        android:background="@drawable/option_three"
+        android:layout_below="@+id/tv_option_two"
+        android:text="Settings"
+        android:clickable="true"
+        android:onClick="settings"
+        android:paddingLeft="@dimen/pad_options_left"
+        android:layout_marginTop="@dimen/pad_options_top"
+        android:gravity="center_vertical"
+        android:textColor="@color/options_color"
+        android:textSize="@dimen/ts_options"
+        android:textStyle="bold"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_option_four"
+        android:layout_width="wrap_content"
+        android:background="@drawable/option_four"
+        android:layout_below="@+id/tv_option_three"
+        android:text="Help"
+        android:clickable="true"
+        android:onClick="help"
+        android:paddingLeft="@dimen/pad_options_left"
+        android:layout_marginTop="@dimen/pad_options_top"
+        android:gravity="center_vertical"
+        android:textColor="@color/options_color"
+        android:textSize="@dimen/ts_options"
+        android:textStyle="bold"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_option_five"
+        android:layout_width="wrap_content"
+        android:background="@drawable/logout"
+        android:layout_below="@+id/tv_option_four"
+        android:layout_marginTop="@dimen/pad_options_top"
+        android:clickable="true"
+        android:onClick="logout"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

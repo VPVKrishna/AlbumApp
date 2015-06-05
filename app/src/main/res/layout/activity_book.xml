@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include
+        android:id="@+id/header_id"
+        layout="@layout/header_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_below="@+id/header_id"
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_toLeftOf="@+id/rb_grid"
+        android:layout_height="wrap_content" />
+
+    <RadioButton
+        android:layout_below="@+id/header_id"
+        android:id="@+id/rb_grid"
+        android:layout_width="wrap_content"
+        android:button="@drawable/grid_selector"
+        android:layout_toLeftOf="@+id/rb_list"
+        android:layout_height="wrap_content" />
+
+    <RadioButton
+        android:layout_below="@+id/header_id"
+        android:id="@+id/rb_list"
+        android:layout_width="wrap_content"
+        android:button="@drawable/list_selector"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/et_search"
+        android:id="@+id/my_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+</RelativeLayout>
