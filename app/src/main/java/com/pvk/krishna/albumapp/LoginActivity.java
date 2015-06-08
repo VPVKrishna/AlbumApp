@@ -42,6 +42,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_signup:
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 Intent signupIntent = new Intent(this, SignUpActivity.class);
                 startActivity(signupIntent);
                 break;
@@ -52,6 +54,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 Login login=new Login(email, pwd);
                 if(isValidCredentials(login)) {
                     // TODO: Login here.
+                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                     Toast.makeText(this, "Successfully logged in.", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(getApplicationContext(), SlideActivity.class);
                     startActivity(intent);
@@ -64,6 +68,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     private boolean isValidCredentials(Login login){
         // TODO: validation logic here.
+        int emailLen=login.getEmail().trim().length();
+        if(emailLen<10){
+            return false;
+        }
         return true;
     }
 }
