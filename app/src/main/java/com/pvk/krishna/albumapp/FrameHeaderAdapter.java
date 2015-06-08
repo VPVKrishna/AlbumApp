@@ -47,6 +47,10 @@ public class FrameHeaderAdapter extends RecyclerView.Adapter<FrameHeaderAdapter.
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final String name = allObjects.get(position);
+
+//        String imageUri = "drawable://" + bean.getImageId();
+//        ImageAware imageAware = new ImageViewAware(holder.ivFrame, false);
+//        ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

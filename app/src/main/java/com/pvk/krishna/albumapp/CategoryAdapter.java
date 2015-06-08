@@ -8,6 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
+
 import java.util.List;
 
 /**
@@ -64,7 +68,11 @@ public class CategoryAdapter extends BaseAdapter {
 
         void updateView(CategoryBean bean){
             tvName.setText(bean.getName());
-            ivCat.setImageResource(bean.getPath());
+//            ivCat.setImageResource(bean.getPath());
+
+            String imageUri="drawable://" + bean.getPath();
+            ImageAware imageAware = new ImageViewAware(ivCat, false);
+            ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
         }
     }
 }

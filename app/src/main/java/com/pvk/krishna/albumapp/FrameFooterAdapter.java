@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.pvk.krishna.albumapp.core.FrameItemBean;
 
 import java.util.ArrayList;
@@ -57,7 +60,11 @@ public class FrameFooterAdapter extends RecyclerView.Adapter<FrameFooterAdapter.
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final int frameId =frames.get(position).getFrameId();
-        holder.ivFrame.setImageResource(frameId);
+//        holder.ivFrame.setImageResource(frameId);
+
+        String imageUri = "drawable://" + frameId;
+        ImageAware imageAware = new ImageViewAware(holder.ivFrame, false);
+        ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
