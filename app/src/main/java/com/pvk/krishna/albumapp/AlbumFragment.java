@@ -9,13 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
-import com.nostra13.universalimageloader.core.assist.ViewScaleType;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
+import com.nostra13.universalimageloader.core.imageaware.ViewAware;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.pvk.krishna.albumapp.core.AlbumFrameBean;
 
@@ -71,85 +71,64 @@ public class AlbumFragment extends Fragment {
         final ImageView ivFrameImage = (ImageView) itemView.findViewById(R.id.iv_my_frame_image);
         final ImageView ivFrameBg= (ImageView) itemView.findViewById(R.id.iv_my_frame_bg);
 
-        ivFrameBg.setBackgroundResource(albumFrameBean.getFrameId());
-   //     ivFrameImage.setImageResource(albumFrameBean.getImageId());
 
+        /*******************************Image ****************************************/
+        String imageUri="drawable://" + albumFrameBean.getImageId();
+        ImageAware imageAware = new ImageViewAware(ivFrameImage, false);
+        imageLoader.displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
+        /******************************************************************************/
+
+        /******************************Bg**********************************************/
         String frameUri="drawable://" + albumFrameBean.getFrameId();
         ImageSize frameSize=new ImageSize(400, 400);
 
+//        MyViewAware myViewAware=new MyViewAware(ivFrameBg, false);
+//        imageLoader.displayImage(frameUri, myViewAware, AlbumLoaderOptions.options);
 
         imageLoader.loadImage(frameUri, frameSize, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String imageUri, View view) {
-                Toast.makeText(getActivity(), "ImageStarted", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getActivity(), "ImageStarted", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                Toast.makeText(getActivity(), "ImageFailed", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getActivity(), "ImageFailed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                Toast.makeText(getActivity(), "ImageCompleted", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "ImageCompleted", Toast.LENGTH_SHORT).show();
                 ivFrameBg.setBackground(new BitmapDrawable(ivFrameBg.getResources(), loadedImage));
             }
 
             @Override
             public void onLoadingCancelled(String imageUri, View view) {
-                Toast.makeText(getActivity(), "ImageCancelled", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "ImageCancelled", Toast.LENGTH_SHORT).show();
             }
         });
+        /******************************************************************************************/
 
-        String imageUri="drawable://" + albumFrameBean.getImageId();
-
-        imageLoader.displayImage(imageUri, ivFrameImage, AlbumLoaderOptions.options);
     }
 
-    class MyImageAware implements ImageAware {
+    class MyViewAware extends ViewAware {
 
-        MyImageAware(int width, int height, ViewScaleType scaleType){
-            //TODO jjjjj
+        public MyViewAware(View view) {
+            super(view);
+        }
+
+        public MyViewAware(View view, boolean checkActualViewSize) {
+            super(view, checkActualViewSize);
         }
 
         @Override
-        public int getWidth() {
-            return 0;
+        protected void setImageDrawableInto(Drawable drawable, View view) {
+            view.setBackground(drawable);
         }
 
         @Override
-        public int getHeight() {
-            return 0;
-        }
+        protected void setImageBitmapInto(Bitmap bitmap, View view) {
 
-        @Override
-        public ViewScaleType getScaleType() {
-            return null;
-        }
-
-        @Override
-        public View getWrappedView() {
-            return null;
-        }
-
-        @Override
-        public boolean isCollected() {
-            return false;
-        }
-
-        @Override
-        public int getId() {
-            return 0;
-        }
-
-        @Override
-        public boolean setImageDrawable(Drawable drawable) {
-            return false;
-        }
-
-        @Override
-        public boolean setImageBitmap(Bitmap bitmap) {
-            return false;
         }
     }
 }
