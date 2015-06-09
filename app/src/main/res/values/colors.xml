@@ -4,4 +4,7 @@
     <color name="options_color">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="blue">#2d24fb</color>
+    <color name="result_border">#dddddd</color>
+    <color name="result_background">#f0f0f0</color>
 </resources>

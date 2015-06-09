@@ -15,6 +15,7 @@ public class Profile {
     private String country;
     private String state;
     private String city;
+    private String fbId;
 
     public Profile(){}
 
@@ -78,6 +79,13 @@ public class Profile {
     public String getCity() {
         return city;
     }
+    public String getFbId() {
+        return fbId;
+    }
+
+    public void setFbId(String fbId) {
+        this.fbId = fbId;
+    }
 
     @Override
     public String toString() {
@@ -92,6 +100,7 @@ public class Profile {
                 ", country='" + country + '\'' +
                 ", state='" + state + '\'' +
                 ", city='" + city + '\'' +
+                ", fbId='" + fbId + '\'' +
                 '}';
     }
 }

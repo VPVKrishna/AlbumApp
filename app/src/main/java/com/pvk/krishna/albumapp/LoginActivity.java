@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.pvk.krishna.albumapp.core.Login;
+import com.pvk.krishna.albumapp.fb.MainActivity;
 
 
 public class LoginActivity extends Activity implements View.OnClickListener {
@@ -61,6 +62,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     startActivity(intent);
                 }else{
                     Toast.makeText(this, "Invalid Credientials.", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(this, MainActivity.class);
+                    startActivity(intent);
                 }
                 break;
         }
