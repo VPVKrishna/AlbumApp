@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pvk.krishna.albumapp" >
+    package="com.pvk.krishna.albumapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -9,50 +9,40 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/app_name" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SignUpActivity"
-            android:label="@string/title_activity_sign_up" >
-        </activity>
+            android:label="@string/title_activity_sign_up"></activity>
         <activity
             android:name=".unwanted.HomeActivity"
-            android:label="@string/title_activity_home" >
-        </activity>
+            android:label="@string/title_activity_home"></activity>
         <activity
             android:name=".unwanted.CategoryActivity"
-            android:label="@string/title_activity_category" >
-        </activity>
+            android:label="@string/title_activity_category"></activity>
         <activity
             android:name=".BookActivity"
-            android:label="@string/title_activity_book" >
-        </activity>
+            android:label="@string/title_activity_book"></activity>
         <activity
             android:name=".HelpActivity"
-            android:label="@string/title_activity_help" >
-        </activity>
+            android:label="@string/title_activity_help"></activity>
         <activity
             android:name=".MyProjectActivity"
-            android:label="@string/title_activity_my_project" >
-        </activity>
+            android:label="@string/title_activity_my_project"></activity>
         <activity
             android:name=".SlideActivity"
-            android:label="@string/title_activity_slide" >
-        </activity>
+            android:label="@string/title_activity_slide"></activity>
         <activity
             android:name=".GalleryActivity"
-            android:label="@string/title_activity_gallery" >
-        </activity>
+            android:label="@string/title_activity_gallery"></activity>
 
-        <activity android:name=".fb.MainActivity"/>
+        <activity android:name=".fb.MainActivity" />
         <activity android:name="com.facebook.LoginActivity" />
 
         <meta-data
@@ -64,6 +54,9 @@
             android:authorities="com.facebook.app.NativeAppCallContentProvider852596841501254"
             android:exported="true" />
 
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name"></activity>
     </application>
 
 </manifest>

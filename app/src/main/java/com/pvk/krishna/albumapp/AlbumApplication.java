@@ -6,6 +6,7 @@ import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.pvk.krishna.albumapp.volley.RequestManager;
 import com.sromku.simple.fb.Permission;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.SimpleFacebookConfiguration;
@@ -19,9 +20,15 @@ public class AlbumApplication extends Application {
     private static final String APP_ID = "852596841501254";
     private static final String APP_NAMESPACE = "samplealbumapp";
 
+    // key hash -->   b7T051clInri32j1CsUIT9xWeMc=
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Initializing the request manager.
+        RequestManager.init(getApplicationContext());
+
         ImageLoader imageLoader = ImageLoader.getInstance();
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
