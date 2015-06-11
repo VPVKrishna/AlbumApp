@@ -381,4 +381,28 @@ public class CustomerLogin {
     public void setRpTokenCreatedAt(String rpTokenCreatedAt) {
         this.rpTokenCreatedAt = rpTokenCreatedAt;
     }
+
+    @Override
+    public String toString() {
+        return "CustomerLogin{" +
+                "websiteId='" + websiteId + '\'' +
+                ", storeId='" + storeId + '\'' +
+                ", entityId='" + entityId + '\'' +
+                ", entityTypeId='" + entityTypeId + '\'' +
+                ", attributeSetId='" + attributeSetId + '\'' +
+                ", email='" + email + '\'' +
+                ", groupId='" + groupId + '\'' +
+                ", incrementId=" + incrementId +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                ", isActive='" + isActive + '\'' +
+                ", disableAutoGroupChange='" + disableAutoGroupChange + '\'' +
+                ", createdIn='" + createdIn + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                ", rpToken='" + rpToken + '\'' +
+                ", rpTokenCreatedAt='" + rpTokenCreatedAt + '\'' +
+                '}';
+    }
 }

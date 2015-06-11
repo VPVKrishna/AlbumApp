@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +13,25 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.VolleyError;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.pvk.krishna.albumapp.gson.CategoryList;
+import com.pvk.krishna.albumapp.gson.ResponseBean;
+import com.pvk.krishna.albumapp.utils.Constants;
+import com.pvk.krishna.albumapp.utils.OnStringResponseListener;
+import com.pvk.krishna.albumapp.utils.ResponseUtilities;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Krishna on 31/05/2015.
  */
-public class CategoryFragment extends Fragment {
+public class CategoryFragment extends Fragment implements OnStringResponseListener {
 
     @Nullable
     @Override
@@ -73,5 +86,35 @@ public class CategoryFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        String query="user=cats&pswd=soap123";
+
+        ResponseUtilities.getInstance().getStringResponseFromUrl(this, Constants.CATEGORY_LIST_ID, getActivity(), Constants.CATEGORY_LIST_URL+"?"+query, Constants.CATEGORY_LIST_TAG);
+
+    }
+
+    @Override
+    public void onResponse(String response, int requestId) {
+        Log.d("RESPONSE", " res :" + response);
+
+        Gson gson = new Gson();
+        Type listType = new TypeToken<ResponseBean<CategoryList>>(){}.getType();
+        ResponseBean<CategoryList> categoryListResponseBean= gson.fromJson(response, listType);
+        Log.d("RESPONSE", " res :" +categoryListResponseBean);
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError errorResponse, int requestId) {
+
+    }
+
+    @Override
+    public void parseNetworkResponse(NetworkResponse response, int requestId) {
+
+    }
+
+    @Override
+    public Map<String, String> getParams(int requestId) {
+        return null;
     }
 }

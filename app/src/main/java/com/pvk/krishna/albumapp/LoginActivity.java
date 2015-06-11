@@ -15,12 +15,18 @@ import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.VolleyError;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.pvk.krishna.albumapp.core.Login;
 import com.pvk.krishna.albumapp.fb.MainActivity;
+import com.pvk.krishna.albumapp.gson.CustomerLogin;
+import com.pvk.krishna.albumapp.gson.ResponseBean;
 import com.pvk.krishna.albumapp.utils.Constants;
 import com.pvk.krishna.albumapp.utils.OnStringResponseListener;
 import com.pvk.krishna.albumapp.utils.ResponseUtilities;
+import com.sromku.simple.fb.SimpleFacebook;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,10 +40,19 @@ public class LoginActivity extends Activity implements View.OnClickListener, OnS
     private ImageButton ibFacebook;
     private TextView tvForgotPwd;
 
+    private SimpleFacebook mSimpleFacebook;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+
+        mSimpleFacebook = SimpleFacebook.getInstance(this);
+
+        // test local language
+        com.pvk.krishna.albumapp.fb.Utils.updateLanguage(getApplicationContext(), "en");
+        com.pvk.krishna.albumapp.fb.Utils.printHashKey(getApplicationContext());
+
         setContentView(R.layout.activity_login);
 
         btnSignUp = (Button) findViewById(R.id.btn_signup);
@@ -75,7 +90,9 @@ public class LoginActivity extends Activity implements View.OnClickListener, OnS
 //                    Toast.makeText(this, "Successfully logged in.", Toast.LENGTH_SHORT).show();
 //                    Intent intent=new Intent(getApplicationContext(), SlideActivity.class);
 //                    startActivity(intent);
-                    ResponseUtilities.getInstance().getStringResponseFromUrl(this, Constants.LOGIN_ID, this, Constants.LOGIN_URL, Constants.LOGIN_TAG);
+
+                    String query=getQuery(getLoginDetails());
+                    ResponseUtilities.getInstance().getStringResponseFromUrl(this, Constants.LOGIN_ID, this, Constants.LOGIN_URL+"?"+query, Constants.LOGIN_TAG);
                 } else {
                     Toast.makeText(this, "Invalid Credientials.", Toast.LENGTH_SHORT).show();
                 }
@@ -106,11 +123,19 @@ public class LoginActivity extends Activity implements View.OnClickListener, OnS
         super.onResume();
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+
+        mSimpleFacebook = SimpleFacebook.getInstance(this);
     }
 
     @Override
     public void onResponse(String response, int requestId) {
         Log.d("RESPONSE", " res :" + response);
+
+        Gson gson = new Gson();
+        Type listType = new TypeToken<ResponseBean<CustomerLogin>>(){}.getType();
+        ResponseBean<CustomerLogin> customLogin= gson.fromJson(response, listType);
+        Log.d("LOGIN BEAN:", "BEAN:"+customLogin.toString());
+
     }
 
     @Override
@@ -142,5 +167,10 @@ public class LoginActivity extends Activity implements View.OnClickListener, OnS
         loginMap.put(Constants.LOGIN_EMAIL, login.getEmail());
         loginMap.put(Constants.LOGIN_PWD, login.getPassword());
         return loginMap;
+    }
+
+    public String getQuery(Login login){
+        String query=Constants.LOGIN_EMAIL+"="+login.getEmail()+"&"+Constants.LOGIN_PWD+"="+login.getPassword();
+        return query;
     }
 }

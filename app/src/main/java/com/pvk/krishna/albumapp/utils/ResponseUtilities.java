@@ -49,11 +49,9 @@ public class ResponseUtilities {
                                          final String tag) {
 
         Log.d(TAG, "TAG:" + tag + " URL: " + url);
-        if (listener != null)
-            Log.d("ReqParams", listener.getParams(id).toString());
 
         // Creating the StringRequest for requesting the data from the server.
-        StringRequest listRequest = new StringRequest(Method.POST, url, new Listener<String>() {
+        StringRequest listRequest = new StringRequest(Method.GET, url, new Listener<String>() {
 
             @Override
             public void onResponse(String response) {
