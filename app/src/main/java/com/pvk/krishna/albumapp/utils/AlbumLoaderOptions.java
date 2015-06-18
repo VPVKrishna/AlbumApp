@@ -1,6 +1,7 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.utils;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.pvk.krishna.albumapp.R;
 
 /**
  * Created by Krishna on 31/05/2015.

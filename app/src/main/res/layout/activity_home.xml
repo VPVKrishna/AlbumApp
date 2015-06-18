@@ -21,16 +21,26 @@
 
     <Button
         android:id="@+id/btn_create_proj"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="Create Project"
         android:layout_below="@+id/iv_home"
         android:textAllCaps="false"
+        android:ems="15"
+        android:layout_marginTop="50dp"
+        android:padding="20dp"
+        android:background="#ff55ff7c"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn_my_proj"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:ems="15"
+        android:layout_centerHorizontal="true"
         android:text="My Project"
+        android:padding="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#ff5ca0ff"
         android:layout_below="@+id/btn_create_proj"
         android:textAllCaps="false"
         android:layout_height="wrap_content" />

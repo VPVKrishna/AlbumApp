@@ -1,4 +1,4 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.pvk.krishna.albumapp.adapter.GalleryAdapter;
+import com.pvk.krishna.albumapp.R;
 import com.pvk.krishna.albumapp.core.GalleryItemBean;
 
 import java.util.ArrayList;

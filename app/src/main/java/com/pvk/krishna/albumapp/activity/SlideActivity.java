@@ -1,13 +1,17 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.activity;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.pvk.krishna.albumapp.fragment.HomeFragment;
+import com.pvk.krishna.albumapp.R;
+import com.pvk.krishna.albumapp.fragment.EditProfileFragment;
 
 
 public class SlideActivity extends Activity {
@@ -71,5 +75,12 @@ public class SlideActivity extends Activity {
         FragmentTransaction transaction=getFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment, fragment.getClass().toString());
         transaction.commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        super.onDestroy();
     }
 }

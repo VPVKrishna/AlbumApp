@@ -1,4 +1,4 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -17,6 +17,12 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.pvk.krishna.albumapp.core.CategoryBean;
+import com.pvk.krishna.albumapp.R;
+import com.pvk.krishna.albumapp.activity.SlideActivity;
+import com.pvk.krishna.albumapp.utils.Utils;
+import com.pvk.krishna.albumapp.activity.BookActivity;
+import com.pvk.krishna.albumapp.adapter.CategoryAdapter;
 import com.pvk.krishna.albumapp.gson.CategoryList;
 import com.pvk.krishna.albumapp.gson.ResponseBean;
 import com.pvk.krishna.albumapp.utils.Constants;

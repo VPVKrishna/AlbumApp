@@ -1,19 +1,11 @@
 <resources>
 
-     Base application theme.
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowNoTitle">true</item>
         <item name="android:textCursorDrawable">@null</item>
     </style>
-
-   <!-- &lt;!&ndash; Base application theme. &ndash;&gt;
-    <style name="AppTheme" parent="android:Theme.Holo.Light">
-        &lt;!&ndash; Customize your theme here. &ndash;&gt;
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:textCursorDrawable">@null</item>
-    </style>-->
-
+    
     <style name="et_sign_up">
         <item name="android:paddingLeft">@dimen/login_et_left_pad</item>
         <item name="android:paddingRight">@dimen/login_et_right_pad</item>

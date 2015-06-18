@@ -1,4 +1,4 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.pvk.krishna.albumapp.R;
+import com.pvk.krishna.albumapp.activity.LoginActivity;
 
 
 public class SplashActivity extends Activity {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request.Method;
 import com.android.volley.Response;
@@ -97,6 +98,7 @@ public class ResponseUtilities {
         };
         // Adding the request to the RequestQueue
         listRequest.setTag(tag);
+        listRequest.setRetryPolicy(new DefaultRetryPolicy(5000,2,2));
         Log.i("listRequest", "ABCD ");
         Log.i("listRequest", "urlREQ " + listRequest.toString());
         RequestManager.getRequestQueue().add(listRequest);

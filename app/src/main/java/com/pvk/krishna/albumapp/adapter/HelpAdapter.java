@@ -1,4 +1,4 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
+import com.pvk.krishna.albumapp.utils.AlbumLoaderOptions;
+import com.pvk.krishna.albumapp.core.CategoryBean;
+import com.pvk.krishna.albumapp.R;
 
 import java.util.List;
 

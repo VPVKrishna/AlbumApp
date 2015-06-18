@@ -1,4 +1,4 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
+import com.pvk.krishna.albumapp.utils.AlbumLoaderOptions;
+import com.pvk.krishna.albumapp.listener.FrameItemListener;
+import com.pvk.krishna.albumapp.R;
 import com.pvk.krishna.albumapp.core.FrameItemBean;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,6 +7,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
+import com.pvk.krishna.albumapp.fragment.AlbumFragment;
 import com.pvk.krishna.albumapp.core.AlbumFrameBean;
 
 import java.util.ArrayList;

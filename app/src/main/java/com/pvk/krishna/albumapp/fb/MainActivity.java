@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import com.pvk.krishna.albumapp.R;
 import com.sromku.simple.fb.SimpleFacebook;
 
-
 public class MainActivity extends FragmentActivity {
     protected static final String TAG = MainActivity.class.getName();
 
@@ -20,7 +19,6 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         mSimpleFacebook = SimpleFacebook.getInstance(this);
 
-        // test local language
         Utils.updateLanguage(getApplicationContext(), "en");
         Utils.printHashKey(getApplicationContext());
 

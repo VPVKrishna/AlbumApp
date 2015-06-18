@@ -1,4 +1,4 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.pvk.krishna.albumapp.core.CategoryBean;
+import com.pvk.krishna.albumapp.adapter.HelpAdapter;
+import com.pvk.krishna.albumapp.R;
+import com.pvk.krishna.albumapp.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,13 +48,10 @@ public class HelpActivity extends Activity {
         HelpAdapter adapter = new HelpAdapter(this, list);
         lvCategory.setAdapter(adapter);
 
-        /*Intent intent=new Intent(this, MyProjectActivity.class);
-        startActivity(intent);*/
-
         lvCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent slideIntent = new Intent(getApplicationContext(), MyProjectActivity.class);
+                Intent slideIntent = new Intent(getApplicationContext(), MyFilesImagesActivity.class);
                 startActivity(slideIntent);
             }
         });

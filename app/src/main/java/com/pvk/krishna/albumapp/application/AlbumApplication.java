@@ -1,4 +1,4 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.application;
 
 import android.app.Application;
 
@@ -59,3 +59,18 @@ public class AlbumApplication extends Application {
         SimpleFacebook.setConfiguration(configuration);
     }
 }
+
+
+/**
+ dependencies {
+ compile fileTree(dir: 'libs', include: ['*.jar'])
+ compile 'com.android.support:appcompat-v7:22.2.0'
+ compile 'com.android.support:recyclerview-v7:21.0.0'
+ compile 'com.android.support:cardview-v7:21.0.0'
+ compile 'com.jeremyfeinstein.slidingmenu:library:1.3@aar'
+ compile 'com.facebook.android:facebook-android-sdk:3.23.+'
+ compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+ compile 'com.mcxiaoke.volley:library:1.0.+'
+ compile 'com.google.code.gson:gson:2.2.2'
+ }
+**/

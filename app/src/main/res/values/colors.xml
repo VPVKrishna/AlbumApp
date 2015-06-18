@@ -7,4 +7,5 @@
     <color name="blue">#2d24fb</color>
     <color name="result_border">#dddddd</color>
     <color name="result_background">#f0f0f0</color>
+    <color name="text_color">#FFFFFF</color>
 </resources>

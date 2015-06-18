@@ -7,14 +7,14 @@ public interface Constants {
 
     // login details.
     // http://snipsnapz.embedinfosoft.com/webservices/customer/customerlogin.php?email=test321.igex@gmail.com&cust_pswd=test123x
-    int LOGIN_ID=1000;
+    int LOGIN_ID=1000;/***********************/
     String LOGIN_URL="http://snipsnapz.embedinfosoft.com/webservices/customer/customerlogin.php";
     String LOGIN_TAG="login_tag";
     String LOGIN_EMAIL="email";
     String LOGIN_PWD="cust_pswd";
 
     // http://snipsnapz.embedinfosoft.com/webservices/category/categorylist.php?user=cats&pswd=soap123
-    int CATEGORY_LIST_ID=1001;
+    int CATEGORY_LIST_ID=1001;/***********************/
     String CATEGORY_LIST_URL="http://snipsnapz.embedinfosoft.com/webservices/category/categorylist.php";
     String CATEGORY_LIST_TAG="category_list_tag";
     String CATEGORY_USER="user";
@@ -37,15 +37,17 @@ public interface Constants {
     String PRODUCT_LIST_USER="user";
     String PRODUCT_PWD="pwd";
 
-
     // http://snipsnapz.embedinfosoft.com/webservices/customer/customercreate.php?user=cats&pswd=soap123&email=test321.igex@gmail.com
     // &f_name=test&l_name=soap&cust_pswd=test123x
-    int CUSTOMER_CREATE_ID=1004;
+    int CUSTOMER_CREATE_ID=1004;/***********************/
+    String CUSTOMER_CREATE_URL="http://snipsnapz.embedinfosoft.com/webservices/customer/customercreate.php";
+    String CUSTOMER_CREATE_TAG="customer_create_tag";
     String CUSTOMER_CREATE_USER="user";
     String CUSTOMER_CREATE_EMAIL="email";
+    String CUSTOMER_CREATE_PWD="pswd";
     String CUSTOMER_CREATE_FNAME="f_name";
     String CUSTOMER_CREATE_LNAME="l_name";
-    String CUSTOMER_CREATE_PWD="cust_pswd";
+    String CUSTOMER_CREATE_CUST_PWD="cust_pswd";
 
 
     /**

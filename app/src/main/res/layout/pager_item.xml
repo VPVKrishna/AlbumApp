@@ -10,13 +10,13 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/frame_one" />
+        />
 
     <ImageView
         android:id="@+id/iv_my_frame_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:background="@drawable/frame_h_one" />
+        />
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.core;
 
 /**
  * Created by Krishna on 26/05/2015.

@@ -1,4 +1,4 @@
-package com.pvk.krishna.albumapp;
+package com.pvk.krishna.albumapp.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.pvk.krishna.albumapp.R;
+import com.pvk.krishna.albumapp.activity.SlideActivity;
+import com.pvk.krishna.albumapp.fragment.CategoryFragment;
 
 
 /**

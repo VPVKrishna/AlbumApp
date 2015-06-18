@@ -49,41 +49,7 @@ public class GetProfileFragment extends BaseFragment {
                 //		.add(Properties.PICTURE, pictureAttributes)
                 //		.build();
 
-                SimpleFacebook.getInstance().getProfile(new OnProfileListener() {
 
-                    @Override
-                    public void onThinking() {
-                        showDialog();
-                    }
-
-                    @Override
-                    public void onException(Throwable throwable) {
-                        hideDialog();
-                        mResult.setText(throwable.getMessage());
-                    }
-
-                    @Override
-                    public void onFail(String reason) {
-                        hideDialog();
-                        mResult.setText(reason);
-                    }
-
-                    @Override
-                    public void onComplete(Profile response) {
-                        hideDialog();
-                        String str = Utils.toHtml(response);
-                        mResult.setText(Html.fromHtml(str));
-
-                        String telephone = null;
-                        String streetName = null;
-                        String country = null;
-                        String state = null;
-                        String city = null;
-                        com.pvk.krishna.albumapp.core.Profile profile = new com.pvk.krishna.albumapp.core.Profile(response.getFirstName(), response.getMiddleName(), response.getLastName(), response.getEmail(), response.getBirthday(), telephone, streetName, country, state, city);
-                        profile.setFbId(response.getId());
-                        System.out.println("Profile: "+profile);
-                    }
-                });
             }
         });
         return view;
