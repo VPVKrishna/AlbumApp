@@ -5,32 +5,36 @@ import java.io.Serializable;
 /**
  * Created by Krishna on 31/05/2015.
  */
-public class AlbumFrameBean implements Serializable{
-    int frameId;
-    int imageId;
+public class AlbumFrameBean implements Serializable {
+    private int frameId;
+    private String imagePath;
 
-    public AlbumFrameBean(int frameId, int imageId) {
+    public AlbumFrameBean(int frameId, String imagePath) {
         this.frameId = frameId;
-        this.imageId = imageId;
+        this.imagePath = imagePath;
     }
 
     public void setFrameId(int frameId) {
         this.frameId = frameId;
     }
 
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
     public int getFrameId() {
         return frameId;
     }
 
-    public int getImageId() {
-        return imageId;
+    public String getImagePath() {
+        return imagePath;
     }
 
     @Override
     public String toString() {
         return "AlbumFrameBean{" +
                 "frameId=" + frameId +
-                ", imageId=" + imageId +
+                ", imagePath=" + imagePath +
                 '}';
     }
 }

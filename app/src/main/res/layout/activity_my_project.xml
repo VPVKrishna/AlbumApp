@@ -1,14 +1,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="10"
-    android:layout_height="match_parent">
+    android:weightSum="10">
 
-    <include
-        android:id="@+id/header_id"
-        layout="@layout/header_menu"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="50dp"
+        android:background="@drawable/btn_bg"
+        android:paddingLeft="10dp">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_back"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/tv_title"
+            style="@android:style/TextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ems="6"
+            android:gravity="center"
+            android:longClickable="false"
+            android:singleLine="true"
+            android:text="Title"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/save" />
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view_header"
@@ -20,13 +52,13 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_frames"
         android:layout_width="match_parent"
-        android:layout_weight="6"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="6" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view_footer"
         android:layout_width="match_parent"
-        android:layout_weight="2"
         android:layout_height="0dp"
+        android:layout_weight="2"
         android:scrollbars="vertical" />
 </LinearLayout>

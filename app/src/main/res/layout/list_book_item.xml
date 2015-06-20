@@ -7,8 +7,9 @@
     <ImageView
         android:id="@+id/iv_frame"
         android:layout_centerVertical="true"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:scaleType="fitXY"
+        android:layout_width="@dimen/frame_width"
+        android:layout_height="@dimen/frame_height" />
 
     <TextView
         android:id="@+id/tv_frame"

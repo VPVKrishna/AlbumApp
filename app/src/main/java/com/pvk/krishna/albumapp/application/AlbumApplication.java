@@ -43,9 +43,9 @@ public class AlbumApplication extends Application {
         Logger.DEBUG_WITH_STACKTRACE = true;
 
         // initialize facebook configuration
-        Permission[] permissions = new Permission[] {
+        Permission[] permissions = new Permission[]{
                 Permission.PUBLIC_PROFILE,
-                Permission.PUBLISH_ACTION
+                Permission.PUBLISH_ACTION,
         };
 
         SimpleFacebookConfiguration configuration = new SimpleFacebookConfiguration.Builder()
@@ -62,15 +62,15 @@ public class AlbumApplication extends Application {
 
 
 /**
- dependencies {
- compile fileTree(dir: 'libs', include: ['*.jar'])
- compile 'com.android.support:appcompat-v7:22.2.0'
- compile 'com.android.support:recyclerview-v7:21.0.0'
- compile 'com.android.support:cardview-v7:21.0.0'
- compile 'com.jeremyfeinstein.slidingmenu:library:1.3@aar'
- compile 'com.facebook.android:facebook-android-sdk:3.23.+'
- compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
- compile 'com.mcxiaoke.volley:library:1.0.+'
- compile 'com.google.code.gson:gson:2.2.2'
- }
-**/
+ * dependencies {
+ * compile fileTree(dir: 'libs', include: ['*.jar'])
+ * compile 'com.android.support:appcompat-v7:22.2.0'
+ * compile 'com.android.support:recyclerview-v7:21.0.0'
+ * compile 'com.android.support:cardview-v7:21.0.0'
+ * compile 'com.jeremyfeinstein.slidingmenu:library:1.3@aar'
+ * compile 'com.facebook.android:facebook-android-sdk:3.23.+'
+ * compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+ * compile 'com.mcxiaoke.volley:library:1.0.+'
+ * compile 'com.google.code.gson:gson:2.2.2'
+ * }
+ */

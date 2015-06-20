@@ -25,7 +25,7 @@ public class CategoryAdapter extends BaseAdapter {
     private List<CategoryBean> list;
     private final LayoutInflater inflater;
 
-    public CategoryAdapter(Context context, List<CategoryBean> list){
+    public CategoryAdapter(Context context, List<CategoryBean> list) {
 
         inflater = LayoutInflater.from(context);
         this.list = list;
@@ -49,33 +49,34 @@ public class CategoryAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        if(convertView==null){
-            convertView=inflater.inflate(R.layout.choose_category_item, null);
-            holder=new ViewHolder(convertView);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.choose_category_item, null);
+            holder = new ViewHolder(convertView);
             convertView.setTag(holder);
-        }else{
-            holder= (ViewHolder) convertView.getTag();
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
 
         holder.updateView(getItem(position));
         return convertView;
     }
 
-    private static final class ViewHolder{
+    private static final class ViewHolder {
         ImageView ivCat;
         TextView tvName;
-        ViewHolder(View view){
-            ivCat= (ImageView) view.findViewById(R.id.iv_choose_item_frame);
-            tvName= (TextView) view.findViewById(R.id.tv_choose_item_name);
+
+        ViewHolder(View view) {
+            ivCat = (ImageView) view.findViewById(R.id.iv_choose_item_frame);
+            tvName = (TextView) view.findViewById(R.id.tv_choose_item_name);
         }
 
-        void updateView(CategoryBean bean){
+        void updateView(CategoryBean bean) {
             tvName.setText(bean.getName());
 //            ivCat.setImageResource(bean.getPath());
 
-            String imageUri="drawable://" + bean.getPath();
+            String imageUri = "drawable://" + bean.getPath();
             ImageAware imageAware = new ImageViewAware(ivCat, false);
-            ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
+            ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.OPTIONS_EMPTY);
         }
     }
 }

@@ -87,7 +87,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         String imageUri = "drawable://" + bean.getImageId();
         ImageAware imageAware = new ImageViewAware(holder.ivFrame, false);
-        ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
+        ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.OPTIONS_EMPTY);
 
 //        holder.ivFrame.setImageResource(bean.getImageId());
     }

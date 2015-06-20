@@ -1,5 +1,9 @@
 package com.pvk.krishna.albumapp.activity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
@@ -9,10 +13,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.pvk.krishna.albumapp.R;
 import com.pvk.krishna.albumapp.adapter.AlbumPagerAdapter;
 import com.pvk.krishna.albumapp.adapter.FrameFooterAdapter;
@@ -21,12 +31,18 @@ import com.pvk.krishna.albumapp.core.AlbumFrameBean;
 import com.pvk.krishna.albumapp.core.FrameItemBean;
 import com.pvk.krishna.albumapp.fragment.AlbumFragment;
 import com.pvk.krishna.albumapp.listener.FrameItemListener;
+import com.pvk.krishna.albumapp.listener.ImageChangeListener;
+import com.pvk.krishna.albumapp.utils.AlbumLoaderOptions;
+import com.pvk.krishna.albumapp.utils.Constants;
+import com.pvk.krishna.albumapp.utils.Utils;
 
 import java.util.ArrayList;
 
 
-public class MyProjectActivity extends FragmentActivity implements FrameItemListener {
+public class MyProjectActivity extends FragmentActivity implements FrameItemListener, ImageChangeListener {
 
+    private static final int GALLERY_REQ_ID = 1212;
+    public static final String IMAGE_FILE_TYPE = "image/*";
     private RecyclerView rvHeader;
     private RecyclerView rvFooter;
     private LinearLayoutManager lmHeader, lmFooter;
@@ -35,7 +51,7 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
     private ViewPager vpFrame;
     private ArrayList<AlbumFrameBean> albumFrameBeans;
     private AlbumPagerAdapter adapter;
-    private ArrayList<FrameItemBean> frameItemBeans;
+    private ArrayList<FrameItemBean> footerFrameBeans;
     private ArrayList<AlbumFrameBean> headerAlbumFrameBeans;
 
     @Override
@@ -43,10 +59,11 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_project);
 
-        ArrayList<String> imageList=getIntent().getStringArrayListExtra(getString(R.string.image_list));
-        Log.d("ImagesList"," List:"+imageList.size()+" "+imageList.toString());
-        TextView tvTitle = (TextView) findViewById(R.id.tv_title);
-        tvTitle.setText("MyProject");
+        ArrayList<String> imageList = getIntent().getStringArrayListExtra(getString(R.string.image_list));
+
+        Log.d("ImagesList", " List:" + imageList.size() + " " + imageList.toString());
+        final EditText etTitle = (EditText) findViewById(R.id.tv_title);
+        etTitle.setText("MyProject");
 
         rvHeader = (RecyclerView) findViewById(R.id.my_recycler_view_header);
         rvFooter = (RecyclerView) findViewById(R.id.my_recycler_view_footer);
@@ -62,16 +79,37 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
         rvHeader.setLayoutManager(lmHeader);
         rvFooter.setLayoutManager(lmFooter);
 
-        frameItemBeans = new ArrayList<>();
-
-        frameItemBeans.add(new FrameItemBean(R.drawable.frame_h_one));
-        frameItemBeans.add(new FrameItemBean(R.drawable.frame_h_two));
-        frameItemBeans.add(new FrameItemBean(R.drawable.frame_one));
-        frameItemBeans.add(new FrameItemBean(R.drawable.frame_two));
-        frameItemBeans.add(new FrameItemBean(R.drawable.frame_seven));
-
+        footerFrameBeans = new ArrayList<>();
         albumFrameBeans = new ArrayList<>();
-        albumFrameBeans.add(new AlbumFrameBean(R.drawable.frame_h_one, R.drawable.hello));
+        headerAlbumFrameBeans = new ArrayList<>();
+
+        int size = AlbumLoaderOptions.imageFrames.length;
+
+        for (int i = 0; i < size; i++) {
+            footerFrameBeans.add(new FrameItemBean(AlbumLoaderOptions.imageFrames[i]));
+
+            if (i >= imageList.size()) {
+                headerAlbumFrameBeans.add(new AlbumFrameBean(AlbumLoaderOptions.imageFrames[i], null));
+                continue;
+            }
+            headerAlbumFrameBeans.add(new AlbumFrameBean(AlbumLoaderOptions.imageFrames[i], imageList.get(i)));
+            albumFrameBeans.add(new AlbumFrameBean(AlbumLoaderOptions.imageFrames[i], imageList.get(i)));
+        }
+/*
+        footerFrameBeans.add(new FrameItemBean(R.drawable.frame_h_one));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.frame_h_two));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.frame_two));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.frame_seven));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.aframe_one));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.aframe_two));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.aframe_three));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.aframe_four));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.aframe_five));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.aframe_six));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.aframe_seven));
+        footerFrameBeans.add(new FrameItemBean(R.drawable.aframe_eight));*/
+
+        /*albumFrameBeans.add(new AlbumFrameBean(R.drawable.frame_h_one, R.drawable.hello));
         albumFrameBeans.add(new AlbumFrameBean(R.drawable.frame_seven, R.drawable.svs));
         albumFrameBeans.add(new AlbumFrameBean(R.drawable.frame_h_one, R.drawable.valentine));
         albumFrameBeans.add(new AlbumFrameBean(R.drawable.frame_h_one, R.drawable.bowl));
@@ -79,23 +117,36 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
         albumFrameBeans.add(new AlbumFrameBean(R.drawable.frame_two, R.drawable.cute));
         albumFrameBeans.add(new AlbumFrameBean(R.drawable.frame_seven, R.drawable.image_one));
         albumFrameBeans.add(new AlbumFrameBean(R.drawable.frame_h_one, R.drawable.image_two));
-
+*/
         adapter = new AlbumPagerAdapter(getSupportFragmentManager(), albumFrameBeans);
         vpFrame.setAdapter(adapter);
 
-        headerAlbumFrameBeans = new ArrayList<>();
-        headerAlbumFrameBeans.addAll(albumFrameBeans);
-
-        footerAdapter = new FrameFooterAdapter(frameItemBeans, MyProjectActivity.this);
+        footerAdapter = new FrameFooterAdapter(this, footerFrameBeans, MyProjectActivity.this);
         rvFooter.setAdapter(footerAdapter);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                headerAdapter = new FrameHeaderAdapter(headerAlbumFrameBeans);
+                headerAdapter = new FrameHeaderAdapter(MyProjectActivity.this, headerAlbumFrameBeans, MyProjectActivity.this);
                 rvHeader.setAdapter(headerAdapter);
             }
-        }, 500);
+        }, Constants.HEADER_FRAME_DELAY);
+
+        etTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                etTitle.setSelection(0, etTitle.getText().length());
+            }
+        });
+//        vpFrame.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+//                photoPickerIntent.setType(IMAGE_FILE_TYPE);
+//                startActivityForResult(photoPickerIntent, GALLERY_REQ_ID);
+//                return true;
+//            }
+//        });
     }
 
     @Override
@@ -104,13 +155,27 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
         Toast.makeText(this, "Item Clicked At:" + position, Toast.LENGTH_SHORT).show();
 
         int pos = vpFrame.getCurrentItem();
+        changeImageFrame(pos, bean.getFrameId(), null);
+    }
+
+    private void changeImageFrame(int pos, int frameId, final String imagePath) {
         AlbumFragment fragment = adapter.getFragmentAt(pos);
 
-        AlbumFrameBean albumFrameBean = albumFrameBeans.get(pos);
-        albumFrameBean.setFrameId(bean.getFrameId());
+        final AlbumFrameBean albumFrameBean = albumFrameBeans.get(pos);
+        albumFrameBean.setFrameId(frameId);
 
         final View frameView = fragment.getView().findViewById(R.id.iv_my_frame_bg);
-        frameView.setBackgroundResource(albumFrameBean.getFrameId());
+        final ImageView frameImgView = (ImageView) fragment.getView().findViewById(R.id.iv_my_frame_image);
+//        frameView.setBackgroundResource(albumFrameBean.getFrameId());
+
+        if(imagePath!=null) {
+            String imageUri = "file://" + imagePath;
+            ImageAware imageAware = new ImageViewAware(frameImgView, false);
+            ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.OPTIONS_EMPTY);
+            albumFrameBean.setImagePath(imagePath);
+        }
+
+        setBigFrame(frameView, albumFrameBean.getFrameId());
 
         adapter.notifyDataSetChanged();
 
@@ -118,19 +183,142 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
 
         int headerItemPosition = 0;
         if (headerItemView != null) {
-            ImageView ivFrame = (ImageView) headerItemView.findViewById(R.id.iv_frame);
+            final ImageView ivFrame = (ImageView) headerItemView.findViewById(R.id.iv_frame);
+            final ImageView ivImage = (ImageView) headerItemView.findViewById(R.id.iv_image);
             headerItemPosition = (int) ivFrame.getTag();
-            ivFrame.setBackgroundResource(albumFrameBean.getFrameId());
+//            ivFrame.setBackgroundResource(albumFrameBean.getFrameId());
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    setSmallFrame(ivFrame, albumFrameBean.getFrameId());
+                    if(imagePath!=null) {
+                        String imageUri = "file://" + imagePath;
+                        ImageAware imageAware = new ImageViewAware(ivImage, false);
+                        ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
+                    }
+                }
+            }, Constants.HEADER_FRAME_ITEM_DELAY);
         } else {
             Log.e("Error Message: ", "View is null");
         }
+
         Log.e("Message: Posion", "pgPos: " + fragment.getPage() + "   " + headerItemPosition);
 
-        if (frameItemBeans.size() > headerItemPosition) {
+        if (footerFrameBeans.size() > headerItemPosition) {
             AlbumFrameBean aBean = headerAlbumFrameBeans.get(fragment.getPage());
             aBean.setFrameId(albumFrameBean.getFrameId());
+            if(imagePath!=null){
+                aBean.setImagePath(imagePath);
+            }
         } else {
             Log.e("Error Message: ", "position exceeds");
+        }
+    }
+
+    public void setBigFrame(final View ivFrameBg, int frameId) {
+        String frameUri = "drawable://" + frameId;
+        ImageSize frameSize = new ImageSize(250, 250);
+
+//        MyViewAware myViewAware=new MyViewAware(ivFrameBg, false);
+//        imageLoader.displayImage(frameUri, myViewAware, AlbumLoaderOptions.options);
+
+        ImageLoader.getInstance().loadImage(frameUri, frameSize, new ImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String imageUri, View view) {
+                // Toast.makeText(getActivity(), "ImageStarted", Toast.LENGTH_SHORT).show();
+                Log.d("lodd", "lstarted");
+            }
+
+            @Override
+            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                // Toast.makeText(getActivity(), "ImageFailed", Toast.LENGTH_SHORT).show();
+                Log.d("lodd", "lfinished");
+            }
+
+            @Override
+            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                //Toast.makeText(getActivity(), "ImageCompleted", Toast.LENGTH_SHORT).show();
+                Log.d("lodd", "lcompleted");
+                ivFrameBg.setBackground(new BitmapDrawable(ivFrameBg.getResources(), loadedImage));
+            }
+
+            @Override
+            public void onLoadingCancelled(String imageUri, View view) {
+                Log.d("lodd", "lcancelled");
+                //Toast.makeText(getActivity(), "ImageCancelled", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void setSmallFrame(final ImageView ivFrameBg, int frameId) {
+        /******************************Bg**********************************************/
+        String frameUri = "drawable://" + frameId;
+        ImageSize frameSize = new ImageSize(150, 150);
+
+//        MyViewAware myViewAware=new MyViewAware(ivFrameBg, false);
+//        imageLoader.displayImage(frameUri, myViewAware, AlbumLoaderOptions.options);
+
+        ImageLoader.getInstance().loadImage(frameUri, frameSize, new ImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String imageUri, View view) {
+                // Toast.makeText(getActivity(), "ImageStarted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                // Toast.makeText(getActivity(), "ImageFailed", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                //Toast.makeText(getActivity(), "ImageCompleted", Toast.LENGTH_SHORT).show();
+                ivFrameBg.setBackground(new BitmapDrawable(ivFrameBg.getResources(), loadedImage));
+            }
+
+            @Override
+            public void onLoadingCancelled(String imageUri, View view) {
+                //Toast.makeText(getActivity(), "ImageCancelled", Toast.LENGTH_SHORT).show();
+            }
+        });
+        /******************************************************************************************/
+    }
+
+    private View mView;
+    private AlbumFrameBean mBean;
+    private int mPosition;
+
+    @Override
+    public void onImageItemClick(View view, AlbumFrameBean bean, int position) {
+        Log.d("ImageChangeItem", "Item At:" + bean + "  Pos:" + position);
+
+        mView=view;
+        mBean=bean;
+        mPosition=position;
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        photoPickerIntent.setType(IMAGE_FILE_TYPE);
+        startActivityForResult(photoPickerIntent, GALLERY_REQ_ID);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == GALLERY_REQ_ID) {
+                String imgUri=data.getDataString();
+                Log.d("ACTIVITY_RESULT:", "IMAGE_URI:" + imgUri);
+
+                Uri selectedImageUri = data.getData();
+                String filePath = Utils.getRealPathFromURI(getApplicationContext(), selectedImageUri);
+                Log.d("Image Path", filePath + "  " + selectedImageUri.toString() + "  --" + selectedImageUri.getUserInfo());
+                if(mPosition>=albumFrameBeans.size()){
+                    AlbumFrameBean bean=headerAlbumFrameBeans.get(mPosition);
+                    albumFrameBeans.add(new AlbumFrameBean(bean.getFrameId(), null));
+                    adapter.notifyDataSetChanged();
+                }
+
+                int pos=mPosition<albumFrameBeans.size()?mPosition:albumFrameBeans.size()-1;
+                changeImageFrame(pos, mBean.getFrameId(), filePath);
+            }
         }
     }
 }

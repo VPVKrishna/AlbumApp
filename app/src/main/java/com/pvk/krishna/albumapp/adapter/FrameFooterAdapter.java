@@ -1,5 +1,6 @@
 package com.pvk.krishna.albumapp.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,16 +21,18 @@ import java.util.ArrayList;
  * Created by Krishna on 26/05/2015.
  */
 public class FrameFooterAdapter extends RecyclerView.Adapter<FrameFooterAdapter.ViewHolder> {
+    private Context context;
     private ArrayList<FrameItemBean> frames;
     private FrameItemListener listener;
+    private final LayoutInflater inflater;
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
         public ImageView ivFrame;
 
         public ViewHolder(View v) {
             super(v);
-            ivFrame= (ImageView) v.findViewById(R.id.iv_frame);
+            ivFrame = (ImageView) v.findViewById(R.id.iv_frame);
             v.setOnClickListener(this);
         }
 
@@ -40,17 +43,19 @@ public class FrameFooterAdapter extends RecyclerView.Adapter<FrameFooterAdapter.
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public FrameFooterAdapter(ArrayList<FrameItemBean> frames, FrameItemListener listener) {
-        this.frames=frames;
+    public FrameFooterAdapter(Context context, ArrayList<FrameItemBean> frames, FrameItemListener listener) {
+        this.context = context;
+        this.frames = frames;
         this.listener = listener;
+        inflater = LayoutInflater.from(context);
     }
 
     // Create new views (invoked by the layout manager)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+                                         int viewType) {
         // create a new view
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.frame_footer_item, parent, false);
+        View v = inflater.inflate(R.layout.frame_footer_item, parent, false);
 
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
@@ -62,12 +67,12 @@ public class FrameFooterAdapter extends RecyclerView.Adapter<FrameFooterAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        final int frameId =frames.get(position).getFrameId();
+        final int frameId = frames.get(position).getFrameId();
 //        holder.ivFrame.setImageResource(frameId);
 
         String imageUri = "drawable://" + frameId;
         ImageAware imageAware = new ImageViewAware(holder.ivFrame, false);
-        ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
+        ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.OPTIONS_EMPTY);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

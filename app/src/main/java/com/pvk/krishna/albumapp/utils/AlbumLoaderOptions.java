@@ -8,9 +8,16 @@ import com.pvk.krishna.albumapp.R;
  */
 public interface AlbumLoaderOptions {
     DisplayImageOptions options = new DisplayImageOptions.Builder()
-            .showStubImage(0)
-            .showImageForEmptyUri(0).cacheInMemory()
-            .cacheOnDisc().build();
+            .showImageOnLoading(R.drawable.iv_default_image)
+            .showImageForEmptyUri(0).cacheInMemory(true)
+            .cacheOnDisk(true).delayBeforeLoading(100).build();
 
-    int[] imageFrames={R.drawable.frame_h_one, R.drawable.frame_h_two, R.drawable.frame_one, R.drawable.frame_seven, R.drawable.frame_two};
+    DisplayImageOptions OPTIONS_EMPTY = new DisplayImageOptions.Builder()
+            .showImageOnLoading(0)
+            .showImageForEmptyUri(0).cacheInMemory(true)
+            .cacheOnDisk(true).delayBeforeLoading(100).build();
+
+    int[] imageFrames = {R.drawable.frame_h_one, R.drawable.frame_h_two, R.drawable.frame_seven,
+            R.drawable.frame_two, R.drawable.aframe_one, R.drawable.aframe_two, R.drawable.aframe_three, R.drawable.aframe_four,
+            R.drawable.aframe_five, R.drawable.aframe_six};
 }
