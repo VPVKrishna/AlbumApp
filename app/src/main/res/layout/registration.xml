@@ -20,7 +20,7 @@
 
         <EditText
             android:id="@+id/et_sign_up_fname"
-            style="@style/et_sign_up"
+            style="@style/et_sign_up.registration"
             android:hint="First Name"
             android:inputType="textPersonName"
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
 
         <EditText
             android:id="@+id/et_sign_up_mname"
-            style="@style/et_sign_up"
+            style="@style/et_sign_up.registration"
             android:hint="Middle Name"
             android:inputType="textPersonName"
             android:layout_width="match_parent"
@@ -37,7 +37,7 @@
 
         <EditText
             android:id="@+id/et_sign_up_lname"
-            style="@style/et_sign_up"
+            style="@style/et_sign_up.registration"
             android:hint="Last Name"
             android:inputType="textPersonName"
             android:layout_width="match_parent"
@@ -46,7 +46,7 @@
 
         <EditText
             android:id="@+id/et_sign_up_email"
-            style="@style/et_sign_up"
+            style="@style/et_sign_up.registration"
             android:hint="Email Address(Username)"
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
@@ -55,7 +55,7 @@
 
         <EditText
             android:id="@+id/et_sign_up_pwd"
-            style="@style/et_sign_up"
+            style="@style/et_sign_up.registration"
             android:hint="Password"
             android:inputType="textPassword"
             android:layout_width="match_parent"
@@ -64,7 +64,7 @@
 
         <EditText
             android:id="@+id/et_sign_up_cfm_pwd"
-            style="@style/et_sign_up"
+            style="@style/et_sign_up.registration"
             android:hint="Confirm Password"
             android:inputType="textPassword"
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
 
         <EditText
             android:id="@+id/et_sign_up_dob"
-            style="@style/et_sign_up"
+            style="@style/et_sign_up.registration"
             android:hint="Date of Birth"
             android:inputType="date"
             android:layout_width="match_parent"

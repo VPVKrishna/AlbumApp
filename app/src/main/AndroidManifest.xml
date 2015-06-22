@@ -67,8 +67,7 @@
 
         <provider
             android:name="com.facebook.NativeAppCallContentProvider"
-            android:authorities="com.facebook.app.NativeAppCallContentProvider852596841501254"
-            android:exported="true" />
+            android:authorities="com.facebook.app.NativeAppCallContentProvider852596841501254" />
 
         <activity
             android:name=".activity.LoginActivity"

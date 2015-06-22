@@ -35,4 +35,8 @@
     <dimen name="frame_width">100dp</dimen>
     <dimen name="frame_height">100dp</dimen>
 
+    <dimen name="arrow_width">30dp</dimen>
+    <dimen name="arrow_height">30dp</dimen>
+    <dimen name="arrow_pad_right">25dp</dimen>
+
 </resources>

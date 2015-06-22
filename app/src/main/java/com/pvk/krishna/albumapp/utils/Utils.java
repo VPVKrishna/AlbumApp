@@ -2,11 +2,15 @@ package com.pvk.krishna.albumapp.utils;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.Random;
 
@@ -52,5 +56,29 @@ public class Utils {
             return contentUri.getPath();
         }
         return res;
+    }
+
+    public static Bitmap rotatedBitmap(String imagePath, int degrees){
+        String imageUri = "file://" + imagePath;
+        Bitmap loadedBitmap = ImageLoader.getInstance().loadImageSync(imageUri, AlbumLoaderOptions.OPTIONS_EMPTY);
+        return rotate(loadedBitmap, degrees);
+    }
+
+    public static Bitmap rotate(Bitmap b, int degrees) {
+        if (degrees != 0 && b != null) {
+            Matrix m = new Matrix();
+
+            m.setRotate(degrees, (float) b.getWidth() / 2, (float) b.getHeight() / 2);
+            try {
+                Bitmap b2 = Bitmap.createBitmap(b, 0, 0, b.getWidth(), b.getHeight(), m, true);
+                if (b != b2) {
+                    b.recycle();
+                    b = b2;
+                }
+            } catch (OutOfMemoryError ex) {
+                throw ex;
+            }
+        }
+        return b;
     }
 }

@@ -10,7 +10,13 @@
         <item name="android:paddingLeft">@dimen/login_et_left_pad</item>
         <item name="android:paddingRight">@dimen/login_et_right_pad</item>
         <item name="android:layout_marginTop">8dp</item>
-        <item name="android:background">@drawable/et_bg</item>
         <item name="android:cursorVisible">true</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_marginRight">50dp</item>
+    </style>
+
+    <style name="et_sign_up.registration">
+        <item name="android:background">@drawable/et_bg</item>
     </style>
 </resources>
