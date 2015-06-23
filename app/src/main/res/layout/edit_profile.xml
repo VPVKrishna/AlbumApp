@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/header_id"
@@ -10,121 +9,62 @@
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
-    <ScrollView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/header_id"
-        android:layout_height="match_parent">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:paddingBottom="10dp">
 
-        <RelativeLayout
+        <EditText
+            android:id="@+id/et_sign_up_fname"
+            style="@style/et_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="10dp">
+            android:hint="First Name"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/et_sign_up_fname"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="First Name"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/et_sign_up_mname"
+            style="@style/et_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_sign_up_fname"
+            android:hint="Middle Name"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/et_sign_up_mname"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_sign_up_fname"
-                android:hint="Middle Name"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/et_sign_up_lname"
+            style="@style/et_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_sign_up_mname"
+            android:hint="Last Name"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/et_sign_up_lname"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_sign_up_mname"
-                android:hint="Last Name"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/et_sign_up_email"
+            style="@style/et_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_sign_up_lname"
+            android:hint="Email Address(Username)"
+            android:inputType="textEmailAddress" />
 
-            <EditText
-                android:id="@+id/et_sign_up_email"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_sign_up_lname"
-                android:hint="Email Address(Username)"
-                android:inputType="textEmailAddress" />
+        <Button
+            android:id="@+id/btn_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_bg"
+            android:gravity="center"
+            android:text="Submit"
+            android:textAllCaps="false" />
+    </RelativeLayout>
 
-            <EditText
-                android:id="@+id/et_sign_up_dob"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_sign_up_email"
-                android:hint="Date of Birth"
-                android:inputType="date" />
-
-            <EditText
-                android:id="@+id/et_sign_up_telephone"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_sign_up_dob"
-                android:hint="Telephone"
-                android:inputType="phone" />
-
-            <EditText
-                android:id="@+id/et_sign_up_street"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_sign_up_telephone"
-                android:hint="Street Address"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/et_sign_up_country"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_sign_up_street"
-                android:hint="Country"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/et_sign_up_state"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_sign_up_country"
-                android:hint="State"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/et_sign_up_city"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_sign_up_state"
-                android:hint="City"
-                android:inputType="text" />
-
-        </RelativeLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/btn_edit_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_bg"
-        android:ems="12"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="Submit"
-        android:textAllCaps="false" />
 
 </RelativeLayout>

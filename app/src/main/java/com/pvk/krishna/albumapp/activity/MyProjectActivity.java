@@ -324,12 +324,12 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
 
         if (v.getId() == R.id.iv_edit) {
             etTitle.setEnabled(!etTitle.isEnabled());
-            if(etTitle.isEnabled()){
+            if (etTitle.isEnabled()) {
                 etTitle.selectAll();
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-            }else {
-                etTitle.setSelection(0,0);
+            } else {
+                etTitle.setSelection(0, 0);
             }
             Log.d("iv edit", "clicked...........");
             return;
@@ -339,23 +339,46 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
         final ImageView frameImgView = (ImageView) fragment.getView().findViewById(R.id.iv_my_frame_image);
 
         final AlbumFrameBean albumFrameBean = albumFrameBeans.get(vpFrame.getCurrentItem());
-        String imagePath = albumFrameBean.getImagePath();
+        final String imagePath = albumFrameBean.getImagePath();
 
         if (imagePath != null) {
             ImageAware imageAware = new ImageViewAware(frameImgView, false);
             switch (v.getId()) {
                 case R.id.iv_top:
-                    imageAware.setImageBitmap(Utils.rotatedBitmap(imagePath, 180));
+                    albumFrameBean.setRotation(180);
                     break;
                 case R.id.iv_bottom:
-                    imageAware.setImageBitmap(Utils.rotatedBitmap(imagePath, 0));
+                    albumFrameBean.setRotation(0);
                     break;
                 case R.id.iv_left:
-                    imageAware.setImageBitmap(Utils.rotatedBitmap(imagePath, 90));
+                    albumFrameBean.setRotation(270);
                     break;
                 case R.id.iv_right:
-                    imageAware.setImageBitmap(Utils.rotatedBitmap(imagePath, 270));
+                    albumFrameBean.setRotation(90);
                     break;
+            }
+            imageAware.setImageBitmap(Utils.rotatedBitmap(imagePath, albumFrameBean.getRotation()));
+
+            View headerItemView = lmHeader.getChildAt(fragment.getPage() - lmHeader.findFirstVisibleItemPosition());
+            final AlbumFrameBean headerImageBean = headerAlbumFrameBeans.get(vpFrame.getCurrentItem());
+            headerImageBean.setRotation(albumFrameBean.getRotation());
+
+            if (headerItemView != null) {
+                final ImageView ivFrame = (ImageView) headerItemView.findViewById(R.id.iv_frame);
+                final ImageView ivImage = (ImageView) headerItemView.findViewById(R.id.iv_image);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (headerImageBean.getImagePath() != null) {
+                            ImageAware imageAware = new ImageViewAware(ivImage, false);
+//                            ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
+                            imageAware.setImageBitmap(Utils.rotatedBitmap(headerImageBean.getImagePath(), headerImageBean.getRotation()));
+                        }
+                    }
+                }, Constants.HEADER_FRAME_ITEM_DELAY);
+            } else {
+                Log.e("Error Message: ", "View is null");
             }
         } else {
             Log.e("MyProjectActivity", "error in image path");

@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.pvk.krishna.albumapp.fragment.CategoryFragment;
 import com.pvk.krishna.albumapp.fragment.HomeFragment;
 import com.pvk.krishna.albumapp.R;
 import com.pvk.krishna.albumapp.fragment.EditProfileFragment;
@@ -51,6 +52,7 @@ public class SlideActivity extends Activity {
     }
 
     public void createProject(View view){
+        replaceFragment(new CategoryFragment());
         Toast.makeText(getApplicationContext(), "CreateProject", Toast.LENGTH_SHORT).show();
     }
 

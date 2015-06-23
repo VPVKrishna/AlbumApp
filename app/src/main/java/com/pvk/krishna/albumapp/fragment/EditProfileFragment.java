@@ -20,7 +20,7 @@ import com.pvk.krishna.albumapp.core.Profile;
  */
 public class EditProfileFragment extends Fragment {
 
-    private EditText etFName, etMName, etLName, etEmail, etDOB, etTelephone, etStreet, etCountry, etState, etCity;
+    private EditText etFName, etMName, etLName, etEmail;
 
     @Nullable
     @Override
@@ -51,12 +51,6 @@ public class EditProfileFragment extends Fragment {
         etMName= (EditText) view.findViewById(R.id.et_sign_up_mname);
         etLName= (EditText) view.findViewById(R.id.et_sign_up_lname);
         etEmail= (EditText) view.findViewById(R.id.et_sign_up_email);
-        etDOB= (EditText) view.findViewById(R.id.et_sign_up_dob);
-        etTelephone= (EditText) view.findViewById(R.id.et_sign_up_telephone);
-        etStreet= (EditText) view.findViewById(R.id.et_sign_up_street);
-        etCountry= (EditText) view.findViewById(R.id.et_sign_up_country);
-        etState= (EditText) view.findViewById(R.id.et_sign_up_state);
-        etCity= (EditText) view.findViewById(R.id.et_sign_up_city);
 
         view.findViewById(R.id.btn_edit_profile).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,14 +59,8 @@ public class EditProfileFragment extends Fragment {
                 String mName=etMName.getText().toString().trim();
                 String lName=etLName.getText().toString().trim();
                 String email=etEmail.getText().toString().trim();
-                String dob=etDOB.getText().toString().trim();
-                String telephone=etTelephone.getText().toString().trim();
-                String street=etStreet.getText().toString().trim();
-                String country=etCountry.getText().toString().trim();
-                String state=etState.getText().toString().trim();
-                String city=etCity.getText().toString().trim();
 
-                Profile profile=new Profile(fName, mName, lName, email, dob, telephone, street, country, state, city);
+                Profile profile=new Profile(fName, mName, lName, email);
 
                 Toast.makeText(getActivity(), "Profile updation...", Toast.LENGTH_SHORT).show();
             }

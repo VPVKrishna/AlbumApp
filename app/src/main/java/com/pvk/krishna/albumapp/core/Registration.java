@@ -9,16 +9,13 @@ public class Registration {
     private String lName;
     private String email;
     private String password;
-    private String dob;
 
-
-    public Registration(String fName, String mName, String lName, String email, String password, String dob) {
+    public Registration(String fName, String mName, String lName, String email, String password) {
         this.fName = fName;
         this.mName = mName;
         this.lName = lName;
         this.email = email;
         this.password = password;
-        this.dob = dob;
     }
 
     public String getfName() {
@@ -41,10 +38,6 @@ public class Registration {
         return password;
     }
 
-    public String getDob() {
-        return dob;
-    }
-
     @Override
     public String toString() {
         return "Registration{" +
@@ -53,7 +46,6 @@ public class Registration {
                 ", lName='" + lName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", dob='" + dob + '\'' +
                 '}';
     }
 }

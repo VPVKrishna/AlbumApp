@@ -15,11 +15,11 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.pvk.krishna.albumapp.listener.BookItemListener;
-import com.pvk.krishna.albumapp.adapter.MyAdapter;
 import com.pvk.krishna.albumapp.R;
-import com.pvk.krishna.albumapp.utils.Utils;
+import com.pvk.krishna.albumapp.adapter.MyAdapter;
 import com.pvk.krishna.albumapp.core.BookBean;
+import com.pvk.krishna.albumapp.listener.BookItemListener;
+import com.pvk.krishna.albumapp.utils.Utils;
 
 import java.util.ArrayList;
 

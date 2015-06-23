@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,9 @@ import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.pvk.krishna.albumapp.R;
-import com.pvk.krishna.albumapp.listener.ImageChangeListener;
 import com.pvk.krishna.albumapp.core.AlbumFrameBean;
-import com.pvk.krishna.albumapp.utils.AlbumLoaderOptions;
+import com.pvk.krishna.albumapp.listener.ImageChangeListener;
+import com.pvk.krishna.albumapp.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -85,9 +86,11 @@ public class FrameHeaderAdapter extends RecyclerView.Adapter<FrameHeaderAdapter.
         holder.ivFrame.setBackgroundResource(0);
 
         if(bean.getImagePath()!=null) {
-            String imageUri = "file://" + bean.getImagePath();
+//            String imageUri = "file://" + bean.getImagePath();
             ImageAware imageAware = new ImageViewAware(holder.ivImage, false);
-            ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
+            Log.d("FrameHeaderAdapter", "onBindViewHolder (Line:90) :"+bean.getRotation());
+            //ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.options);
+            imageAware.setImageBitmap(Utils.rotatedBitmap(bean.getImagePath(), bean.getRotation()));
         }
 
         setBackgroundFrame(ImageLoader.getInstance(), holder.ivFrame, bean.getFrameId());

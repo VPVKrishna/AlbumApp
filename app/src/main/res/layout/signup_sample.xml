@@ -27,23 +27,7 @@
                 style="@style/et_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="First Name*"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/et_sign_up_mname"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Middle Name*"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/et_sign_up_lname"
-                style="@style/et_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Last Name"
+                android:hint="First Name"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -51,7 +35,7 @@
                 style="@style/et_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email Address (UserName)*"
+                android:hint="Email Address(Username)"
                 android:inputType="textEmailAddress" />
 
             <EditText
@@ -59,7 +43,7 @@
                 style="@style/et_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password*"
+                android:hint="Password"
                 android:inputType="textPassword" />
 
             <EditText
@@ -67,8 +51,24 @@
                 style="@style/et_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Confirm Password*"
+                android:hint="Confirm Password"
                 android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/et_sign_up_phone"
+                style="@style/et_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone number"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/et_sign_up_country"
+                style="@style/et_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Country"
+                android:inputType="text" />
 
             <Button
                 android:id="@+id/btn_signup"

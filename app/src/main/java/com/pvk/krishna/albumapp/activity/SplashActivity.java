@@ -8,13 +8,12 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.pvk.krishna.albumapp.R;
-import com.pvk.krishna.albumapp.activity.LoginActivity;
 
 
 public class SplashActivity extends Activity {
 
     private Handler handler = new Handler();
-    private static final int TIME_OUT=1*1000;
+    private static final int TIME_OUT=3*1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +23,23 @@ public class SplashActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash_screen);
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent loginIntent=new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(loginIntent);
-                finish();
-            }
-        }, TIME_OUT);
+        handler.postDelayed(runnable, TIME_OUT);
+    }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(loginIntent);
+            finish();
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(runnable);
+        runnable=null;
+        handler=null;
     }
 }

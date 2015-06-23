@@ -27,13 +27,13 @@ import java.util.Map;
 
 public class SignUpActivity extends LoadingActivity implements OnStringResponseListener {
 
-    private EditText etFName, etMName, etLName, etEmail, etPwd, etConfirmPwd, etDOB;
+    private EditText etFName, etMName, etLName, etEmail, etPwd, etConfirmPwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registration);
+        setContentView(R.layout.signup);
 
         etFName = (EditText) findViewById(R.id.et_sign_up_fname);
         etMName = (EditText) findViewById(R.id.et_sign_up_mname);
@@ -41,7 +41,6 @@ public class SignUpActivity extends LoadingActivity implements OnStringResponseL
         etEmail = (EditText) findViewById(R.id.et_sign_up_email);
         etPwd = (EditText) findViewById(R.id.et_sign_up_pwd);
         etConfirmPwd = (EditText) findViewById(R.id.et_sign_up_cfm_pwd);
-        etDOB = (EditText) findViewById(R.id.et_sign_up_dob);
 
         TextView tvTitle = (TextView) findViewById(R.id.tv_title);
         tvTitle.setText("Registration");
@@ -93,14 +92,13 @@ public class SignUpActivity extends LoadingActivity implements OnStringResponseL
         String email = etEmail.getText().toString().trim();
         String pwd = etPwd.getText().toString().trim();
         String confirmPwd = etConfirmPwd.getText().toString().trim();
-        String dob = etDOB.getText().toString().trim();
 
         if (!pwd.equals(confirmPwd)) {
             return false;
         }
         // TODO: other validation here
 
-        Registration registration = new Registration(fName, mName, lName, email, pwd, dob);
+        Registration registration = new Registration(fName, mName, lName, email, pwd);
 
         Log.d("REGISTRATION:", "REG:" + registration);
 

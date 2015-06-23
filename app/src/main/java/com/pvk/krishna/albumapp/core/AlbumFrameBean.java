@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class AlbumFrameBean implements Serializable {
     private int frameId;
     private String imagePath;
+    private int rotation;
 
     public AlbumFrameBean(int frameId, String imagePath) {
         this.frameId = frameId;
@@ -29,12 +30,20 @@ public class AlbumFrameBean implements Serializable {
     public String getImagePath() {
         return imagePath;
     }
+    public int getRotation() {
+        return rotation;
+    }
+
+    public void setRotation(int rotation) {
+        this.rotation = rotation;
+    }
 
     @Override
     public String toString() {
         return "AlbumFrameBean{" +
                 "frameId=" + frameId +
-                ", imagePath=" + imagePath +
+                ", imagePath='" + imagePath + '\'' +
+                ", rotation=" + rotation +
                 '}';
     }
 }
