@@ -17,7 +17,7 @@ public class CategoryBean {
         return name;
     }
 
-    public int getPath() {
+    public int getFrameId() {
         return path;
     }
 }

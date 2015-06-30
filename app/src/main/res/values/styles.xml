@@ -4,8 +4,9 @@
         <!-- Customize your theme here. -->
         <item name="android:windowNoTitle">true</item>
         <item name="android:textCursorDrawable">@null</item>
+        <item name="android:popupMenuStyle">@android:style/Widget.PopupWindow</item>
     </style>
-    
+
     <style name="et_sign_up">
         <item name="android:paddingLeft">@dimen/login_et_left_pad</item>
         <item name="android:paddingRight">@dimen/login_et_right_pad</item>
@@ -17,4 +18,9 @@
     <style name="et_sign_up.registration">
         <item name="android:background">@drawable/et_bg</item>
     </style>
+
+    <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
+        <item name="android:popupBackground">@drawable/dialog_frame_shadow</item>
+    </style>
+
 </resources>

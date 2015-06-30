@@ -7,13 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.imageaware.ImageAware;
-import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
-import com.pvk.krishna.albumapp.utils.AlbumLoaderOptions;
-import com.pvk.krishna.albumapp.listener.BookItemListener;
 import com.pvk.krishna.albumapp.R;
 import com.pvk.krishna.albumapp.core.BookBean;
+import com.pvk.krishna.albumapp.listener.BookItemListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -85,11 +82,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         BookBean bean = visibleObjects.get(position);
         holder.tvFrame.setText(bean.getName());
 
-        String imageUri = "drawable://" + bean.getImageId();
-        ImageAware imageAware = new ImageViewAware(holder.ivFrame, false);
-        ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.OPTIONS_EMPTY);
+        Picasso.with(holder.ivFrame.getContext())
+                .load(bean.getImageId())
+                .placeholder(R.drawable.iv_default_image)
+                .fit()
+                .into(holder.ivFrame);
 
-//        holder.ivFrame.setImageResource(bean.getImageId());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

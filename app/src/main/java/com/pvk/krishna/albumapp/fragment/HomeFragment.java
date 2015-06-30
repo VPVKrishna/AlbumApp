@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.pvk.krishna.albumapp.R;
 import com.pvk.krishna.albumapp.activity.SlideActivity;
-import com.pvk.krishna.albumapp.fragment.CategoryFragment;
 
 
 /**
@@ -31,9 +30,9 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        TextView tvTitle= (TextView) getView().findViewById(R.id.tv_title);
+        TextView tvTitle = (TextView) getView().findViewById(R.id.tv_title);
         tvTitle.setText("Home");
-        ImageButton btnBack= (ImageButton) getView().findViewById(R.id.btn_back);
+        ImageButton btnBack = (ImageButton) getView().findViewById(R.id.btn_back);
         btnBack.setBackgroundResource(R.drawable.option_menu);
 
         Button btnCreateProject = (Button) getView().findViewById(R.id.btn_create_proj);
@@ -42,7 +41,7 @@ public class HomeFragment extends Fragment {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((SlideActivity)getActivity()).openSlidingDrawer();
+                ((SlideActivity) getActivity()).openSlidingDrawer();
             }
         });
 
@@ -53,13 +52,14 @@ public class HomeFragment extends Fragment {
                 /*Intent intent = new Intent(getActivity().getApplicationContext(), CategoryActivity.class);
                 startActivity(intent);*/
 
-                ((SlideActivity)getActivity()).replaceFragment(new CategoryFragment());
+                ((SlideActivity) getActivity()).replaceFragment(new CategoryFragment());
             }
         });
 
         btnMyProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((SlideActivity) getActivity()).replaceFragment(new MyProjectFragment());
                 Toast.makeText(getActivity().getApplicationContext(), "My Project", Toast.LENGTH_SHORT).show();
             }
         });

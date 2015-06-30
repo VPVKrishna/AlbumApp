@@ -30,7 +30,7 @@ public class AlbumPagerAdapter extends FragmentPagerAdapter {
     // Returns the fragment to display for that page
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment=AlbumFragment.newInstance(position, "Title:" + position, frameBeans.get(position));
+        Fragment fragment = AlbumFragment.newInstance(position, "Title:" + position, frameBeans.get(position));
         return fragment;
     }
 
@@ -53,8 +53,8 @@ public class AlbumPagerAdapter extends FragmentPagerAdapter {
         super.destroyItem(container, position, object);
     }
 
-    public AlbumFragment getFragmentAt(int position){
-        Log.d("FragmentListSize:", "Size:"+albumsFragments.size());
+    public AlbumFragment getFragmentAt(int position) {
+        Log.d("FragmentListSize:", "Size:" + albumsFragments.size());
         return albumsFragments.get(position);
     }
 }

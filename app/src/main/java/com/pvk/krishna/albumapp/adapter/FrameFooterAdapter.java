@@ -7,13 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.imageaware.ImageAware;
-import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
-import com.pvk.krishna.albumapp.utils.AlbumLoaderOptions;
-import com.pvk.krishna.albumapp.listener.FrameItemListener;
 import com.pvk.krishna.albumapp.R;
 import com.pvk.krishna.albumapp.core.FrameItemBean;
+import com.pvk.krishna.albumapp.listener.FrameItemListener;
+import com.pvk.krishna.albumapp.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -21,7 +18,6 @@ import java.util.ArrayList;
  * Created by Krishna on 26/05/2015.
  */
 public class FrameFooterAdapter extends RecyclerView.Adapter<FrameFooterAdapter.ViewHolder> {
-    private Context context;
     private ArrayList<FrameItemBean> frames;
     private FrameItemListener listener;
     private final LayoutInflater inflater;
@@ -44,7 +40,6 @@ public class FrameFooterAdapter extends RecyclerView.Adapter<FrameFooterAdapter.
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public FrameFooterAdapter(Context context, ArrayList<FrameItemBean> frames, FrameItemListener listener) {
-        this.context = context;
         this.frames = frames;
         this.listener = listener;
         inflater = LayoutInflater.from(context);
@@ -67,12 +62,9 @@ public class FrameFooterAdapter extends RecyclerView.Adapter<FrameFooterAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        final int frameId = frames.get(position).getFrameId();
-//        holder.ivFrame.setImageResource(frameId);
+        final String frameName = frames.get(position).getFrame();
 
-        String imageUri = "drawable://" + frameId;
-        ImageAware imageAware = new ImageViewAware(holder.ivFrame, false);
-        ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.OPTIONS_EMPTY);
+        Utils.updateFrame(holder.ivFrame, frameName);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

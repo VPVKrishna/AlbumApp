@@ -11,6 +11,7 @@ public interface Constants {
     /**
      * *******************
      */
+
     String LOGIN_URL = "http://snipsnapz.embedinfosoft.com/webservices/customer/customerlogin.php";
     String LOGIN_TAG = "login_tag";
     String LOGIN_EMAIL = "email";
@@ -96,4 +97,7 @@ public interface Constants {
 
     public int HEADER_FRAME_DELAY = 500;
     public int HEADER_FRAME_ITEM_DELAY = 500;
+
+
+    String DRAWABLE_PREFIX = "android.resource://com.pvk.krishna.albumapp/drawable/";
 }

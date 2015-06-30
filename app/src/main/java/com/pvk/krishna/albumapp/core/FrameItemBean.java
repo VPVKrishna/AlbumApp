@@ -5,17 +5,17 @@ package com.pvk.krishna.albumapp.core;
  */
 public class FrameItemBean {
 
-    int frameId;
+    String frame;
 
-    public FrameItemBean(int frameId) {
-        this.frameId = frameId;
+    public FrameItemBean(String frame) {
+        this.frame = frame;
     }
 
-    public int getFrameId() {
-        return frameId;
+    public String getFrame() {
+        return frame;
     }
 
-    public void setFrameId(int frameId) {
-        this.frameId = frameId;
+    public void setFrame(String frame) {
+        this.frame = frame;
     }
 }

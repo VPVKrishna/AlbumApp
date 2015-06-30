@@ -14,6 +14,7 @@ import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.pvk.krishna.albumapp.utils.AlbumLoaderOptions;
 import com.pvk.krishna.albumapp.core.CategoryBean;
 import com.pvk.krishna.albumapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -72,10 +73,16 @@ public class HelpAdapter extends BaseAdapter {
 
         void updateView(CategoryBean bean) {
             tvName.setText(bean.getName());
-//            ivCat.setImageResource(bean.getPath());
-            String imageUri = "drawable://" + bean.getPath();
+//            ivCat.setImageResource(bean.getFrameId());
+            String imageUri = "drawable://" + bean.getFrameId();
             ImageAware imageAware = new ImageViewAware(ivCat, false);
             ImageLoader.getInstance().displayImage(imageUri, imageAware, AlbumLoaderOptions.OPTIONS_EMPTY);
+
+            Picasso.with(ivCat.getContext())
+                    .load(bean.getFrameId())
+                    .placeholder(R.drawable.iv_default_image)
+                    .fit()
+                    .into(ivCat);
         }
     }
 }

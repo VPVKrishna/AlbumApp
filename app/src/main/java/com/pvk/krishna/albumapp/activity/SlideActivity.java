@@ -47,12 +47,12 @@ public class SlideActivity extends Activity {
     public void editProfile(View view){
         replaceFragment(new EditProfileFragment());
         menu.showContent(true);
-
         Toast.makeText(getApplicationContext(), "EditProfile", Toast.LENGTH_SHORT).show();
     }
 
     public void createProject(View view){
         replaceFragment(new CategoryFragment());
+        menu.showContent(true);
         Toast.makeText(getApplicationContext(), "CreateProject", Toast.LENGTH_SHORT).show();
     }
 
@@ -76,6 +76,7 @@ public class SlideActivity extends Activity {
     public void replaceFragment(Fragment fragment){
         FragmentTransaction transaction=getFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment, fragment.getClass().toString());
+        transaction.addToBackStack(fragment.getClass().getSimpleName());
         transaction.commit();
     }
 

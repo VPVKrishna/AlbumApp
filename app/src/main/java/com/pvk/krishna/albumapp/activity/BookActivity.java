@@ -32,12 +32,14 @@ public class BookActivity extends Activity implements BookItemListener {
     private RadioButton rbList;
     private RadioButton rbGrid;
     private String filter="";
+    private TextView tvEmptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
+        tvEmptyView = (TextView) findViewById(R.id.tv_empty_view);
         TextView tvTitle= (TextView) findViewById(R.id.tv_title);
         tvTitle.setText("Book");
 
@@ -59,6 +61,7 @@ public class BookActivity extends Activity implements BookItemListener {
         mAdapter = new MyAdapter(myDataset);
         mAdapter.setFilter("");
         mRecyclerView.setAdapter(mAdapter);
+        Utils.setEmptyRecycleView(mAdapter, tvEmptyView);
 
         setList(true);
         rbList.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
