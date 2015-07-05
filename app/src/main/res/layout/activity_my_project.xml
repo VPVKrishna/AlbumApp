@@ -26,6 +26,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:ems="6"
+            android:textColorHighlight="#88000000"
             android:gravity="center"
             android:longClickable="false"
             android:singleLine="true"

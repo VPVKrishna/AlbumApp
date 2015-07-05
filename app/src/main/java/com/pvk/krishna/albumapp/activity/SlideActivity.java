@@ -2,17 +2,19 @@ package com.pvk.krishna.albumapp.activity;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.pvk.krishna.albumapp.fragment.CategoryFragment;
-import com.pvk.krishna.albumapp.fragment.HomeFragment;
 import com.pvk.krishna.albumapp.R;
+import com.pvk.krishna.albumapp.fragment.CategoryFragment;
 import com.pvk.krishna.albumapp.fragment.EditProfileFragment;
+import com.pvk.krishna.albumapp.fragment.HomeFragment;
 
 
 public class SlideActivity extends Activity {
@@ -34,7 +36,7 @@ public class SlideActivity extends Activity {
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         menu.setMenu(R.layout.slide_options);
 
-        replaceFragment(new HomeFragment());
+        replaceFragment(new HomeFragment(), false);
     }
 
     public void openSlidingDrawer(){
@@ -43,15 +45,14 @@ public class SlideActivity extends Activity {
         }
     }
 
-
     public void editProfile(View view){
-        replaceFragment(new EditProfileFragment());
+        replaceFragment(new EditProfileFragment(), true);
         menu.showContent(true);
         Toast.makeText(getApplicationContext(), "EditProfile", Toast.LENGTH_SHORT).show();
     }
 
     public void createProject(View view){
-        replaceFragment(new CategoryFragment());
+        replaceFragment(new CategoryFragment(), true);
         menu.showContent(true);
         Toast.makeText(getApplicationContext(), "CreateProject", Toast.LENGTH_SHORT).show();
     }
@@ -71,12 +72,25 @@ public class SlideActivity extends Activity {
 
     public void logout(View view){
         Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
-    public void replaceFragment(Fragment fragment){
+    public void replaceFragment(Fragment fragment, boolean isWantToBackStack) {
+
+        FragmentManager fm = getFragmentManager();
+        String simpleName = fragment.getClass().getSimpleName();
+        Fragment frag = fm.findFragmentByTag(simpleName);
+
+        if (frag != null) {
+            fm.popBackStack(simpleName, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
         FragmentTransaction transaction=getFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_frame, fragment, fragment.getClass().toString());
-        transaction.addToBackStack(fragment.getClass().getSimpleName());
+        transaction.replace(R.id.content_frame, fragment, simpleName);
+        if (isWantToBackStack) {
+            transaction.addToBackStack(simpleName);
+        }
         transaction.commit();
     }
 

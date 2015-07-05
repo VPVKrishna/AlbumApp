@@ -100,7 +100,7 @@ public class Utils {
     public static void updateImage(ImageView ivImage, String path, int rotation, int width, int height) {
 
         Picasso.with(ivImage.getContext())
-                .load("file://" + path)
+                .load(path)
                 .rotate(rotation)
                 .placeholder(R.drawable.iv_default_image)
                 .centerInside()

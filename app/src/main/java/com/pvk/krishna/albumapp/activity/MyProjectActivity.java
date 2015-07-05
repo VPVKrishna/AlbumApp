@@ -213,7 +213,8 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
         Toast.makeText(this, "Item Clicked At:" + position, Toast.LENGTH_SHORT).show();
 
         int pos = vpFrame.getCurrentItem();
-        changeImageFrame(pos, bean.getFrame(), null);
+        Log.d("MyProjectActivity", "onItemClick (Line:216) :Pos:" + pos + " Bean:" + bean.toString());
+        changeImageFrame(pos, bean.getFrame(), albumFrameBeans.get(pos).getImagePath());
     }
 
     private void changeImageFrame(int pos, String frameName, final String imagePath) {
@@ -221,19 +222,21 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
 
         final AlbumFrameBean albumFrameBean = albumFrameBeans.get(pos);
         albumFrameBean.setFrameName(frameName);
+        albumFrameBean.setImagePath(imagePath);
 
-        final ImageView frameView = (ImageView) fragment.getView().findViewById(R.id.iv_my_frame_bg);
-        final ImageView frameImgView = (ImageView) fragment.getView().findViewById(R.id.iv_my_frame_image);
+        if (fragment != null && fragment.getView() != null) {
+            final ImageView frameView = (ImageView) fragment.getView().findViewById(R.id.iv_my_frame_bg);
+            final ImageView frameImgView = (ImageView) fragment.getView().findViewById(R.id.iv_my_frame_image);
 
-        if (imagePath != null) {
-            Utils.updateImage(frameImgView, imagePath, albumFrameBean.getRotation(), Utils.BIG_IMG_WIDTH, Utils.BIG_IMG_HEIGHT);
-            albumFrameBean.setImagePath(imagePath);
+            if (imagePath != null) {
+                Utils.updateImage(frameImgView, imagePath, albumFrameBean.getRotation(), Utils.BIG_IMG_WIDTH, Utils.BIG_IMG_HEIGHT);
+            }
+
+            Utils.updateFrame(frameView, frameName);
         }
-
-        Utils.updateFrame(frameView, frameName);
         adapter.notifyDataSetChanged();
 
-        View headerItemView = lmHeader.getChildAt(fragment.getPage() - lmHeader.findFirstVisibleItemPosition());
+        View headerItemView = lmHeader.getChildAt(pos - lmHeader.findFirstVisibleItemPosition());
 
         int headerItemPosition = 0;
         if (headerItemView != null) {
@@ -249,10 +252,10 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
         }
         headerAdapter.notifyDataSetChanged();
 
-        Log.e("Message: Posion", "pgPos: " + fragment.getPage() + "   " + headerItemPosition);
+        Log.e("Message: Posion", "pgPos: " + pos + "   " + headerItemPosition);
 
         if (footerFrameBeans.size() > headerItemPosition) {
-            AlbumFrameBean aBean = headerAlbumFrameBeans.get(fragment.getPage());
+            AlbumFrameBean aBean = headerAlbumFrameBeans.get(pos);
             aBean.setFrameName(albumFrameBean.getFrameName());
             if (imagePath != null) {
                 aBean.setImagePath(imagePath);
@@ -285,8 +288,8 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
                 Log.d("ACTIVITY_RESULT:", "IMAGE_URI:" + imgUri);
 
                 Uri selectedImageUri = data.getData();
-                String filePath = Utils.getRealPathFromURI(getApplicationContext(), selectedImageUri);
-                Log.d("Image Path", filePath + "  " + selectedImageUri.toString() + "  --" + selectedImageUri.getUserInfo());
+                // String filePath = Utils.getRealPathFromURI(getApplicationContext(), selectedImageUri);
+                Log.d("Image Uri", selectedImageUri.toString() + "  --" + selectedImageUri.getUserInfo());
                 if (mPosition >= albumFrameBeans.size()) {
                     AlbumFrameBean bean = headerAlbumFrameBeans.get(mPosition);
                     albumFrameBeans.add(new AlbumFrameBean(bean.getFrameName(), null));
@@ -294,7 +297,14 @@ public class MyProjectActivity extends FragmentActivity implements FrameItemList
                 }
 
                 int pos = mPosition < albumFrameBeans.size() ? mPosition : albumFrameBeans.size() - 1;
-                changeImageFrame(pos, mBean.getFrameName(), filePath);
+
+                changeImageFrame(pos, mBean.getFrameName(), selectedImageUri.toString());
+
+//                if(filePath==null) {
+//                    Toast.makeText(this, "Error in filePath retrieving....!", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    changeImageFrame(pos, mBean.getFrameName(), filePath);
+//                }
             }
         }
     }

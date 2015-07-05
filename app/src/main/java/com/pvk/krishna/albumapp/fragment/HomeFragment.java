@@ -52,14 +52,14 @@ public class HomeFragment extends Fragment {
                 /*Intent intent = new Intent(getActivity().getApplicationContext(), CategoryActivity.class);
                 startActivity(intent);*/
 
-                ((SlideActivity) getActivity()).replaceFragment(new CategoryFragment());
+                ((SlideActivity) getActivity()).replaceFragment(new CategoryFragment(), true);
             }
         });
 
         btnMyProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((SlideActivity) getActivity()).replaceFragment(new MyProjectFragment());
+                ((SlideActivity) getActivity()).replaceFragment(new MyProjectFragment(), true);
                 Toast.makeText(getActivity().getApplicationContext(), "My Project", Toast.LENGTH_SHORT).show();
             }
         });

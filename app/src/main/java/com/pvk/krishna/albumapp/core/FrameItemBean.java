@@ -18,4 +18,11 @@ public class FrameItemBean {
     public void setFrame(String frame) {
         this.frame = frame;
     }
+
+    @Override
+    public String toString() {
+        return "FrameItemBean{" +
+                "frame='" + frame + '\'' +
+                '}';
+    }
 }

@@ -53,7 +53,6 @@ public class MyProjectFragment extends Fragment {
         });
     }
 
-
     public void showPopupMenu(final View view, final int itemPosition) {
         //Creating the instance of PopupMenu
         PopupMenu popup = new PopupMenu(getActivity(), view);

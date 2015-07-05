@@ -80,6 +80,7 @@ public class SignUpActivity extends LoadingActivity implements OnStringResponseL
                     Toast.makeText(getApplicationContext(), "No network connection.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), SlideActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
