@@ -16,10 +16,11 @@
     <dimen name="shadow_width">15dp</dimen>
     <integer name="num_cols">1</integer>
 
+    <dimen name="ts_title">24sp</dimen>
     <dimen name="ts_options">16sp</dimen>
     <dimen name="ts_forgot_pwd">20dp</dimen>
     <dimen name="pad_options_left">50dp</dimen>
-    <dimen name="pad_options_top">5dp</dimen>
+    <dimen name="pad_options_top">15dp</dimen>
 
     <dimen name="margin3">3dp</dimen>
     <dimen name="margin5">5dp</dimen>

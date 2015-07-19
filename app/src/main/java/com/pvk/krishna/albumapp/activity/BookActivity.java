@@ -117,7 +117,8 @@ public class BookActivity extends Activity implements BookItemListener {
     public void onItemClick(View view, BookBean bean, int position) {
         Toast.makeText(getApplicationContext(), "Clicked At:"+position+"  Name:"+bean.getName(), Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+//        Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MyFilesImagesActivity.class);
         startActivity(intent);
     }
 }

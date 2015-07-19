@@ -12,6 +12,7 @@
     <string name="title_activity_my_project">MyProjectActivity</string>
     <string name="title_activity_slide">SlideActivity</string>
     <string name="title_activity_gallery">GalleryActivity</string>
+    <string name="pagermargin">-340</string>
 
     <!-- Fb resources -->
     <string name="app_id">852596841501254</string>

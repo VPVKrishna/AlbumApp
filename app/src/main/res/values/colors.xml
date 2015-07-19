@@ -8,4 +8,6 @@
     <color name="result_border">#dddddd</color>
     <color name="result_background">#f0f0f0</color>
     <color name="text_color">#FFFFFF</color>
+
+    <color name="header_color">#21a2c0</color>
 </resources>

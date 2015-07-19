@@ -9,39 +9,63 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/iv_home"
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_home"-->
+    <!--android:layout_below="@+id/header_id"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:src="@drawable/home_image"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_height="wrap_content" />-->
+
+    <RelativeLayout
+        android:id="@+id/rl_viewpager"
         android:layout_below="@+id/header_id"
-        android:layout_width="wrap_content"
-        android:src="@drawable/home_image"
+        android:layout_above="@+id/btn_create_proj"
+        android:layout_width="match_parent"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/myviewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:overScrollMode="never"></android.support.v4.view.ViewPager>
+    </RelativeLayout>
 
 
     <Button
         android:id="@+id/btn_create_proj"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:text="Create Project"
-        android:layout_below="@+id/iv_home"
+        android:layout_above="@+id/btn_my_proj"
         android:textAllCaps="false"
         android:ems="15"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
-        android:padding="20dp"
+        android:padding="40dp"
+        android:textSize="@dimen/ts_title"
         android:background="#ff55ff7c"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn_my_proj"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:ems="15"
         android:layout_centerHorizontal="true"
         android:text="My Project"
-        android:padding="20dp"
+        android:textSize="@dimen/ts_title"
+        android:padding="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:background="#ff5ca0ff"
-        android:layout_below="@+id/btn_create_proj"
         android:textAllCaps="false"
+        android:layout_alignParentBottom="true"
         android:layout_height="wrap_content" />
 </RelativeLayout>

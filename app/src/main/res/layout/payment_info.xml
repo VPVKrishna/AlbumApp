@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="20dp"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/rg_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin5"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Check/Money Order" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Credit Card (saved)" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_name_on_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rg_payment"
+        android:text="Name on Card" />
+
+    <EditText
+        android:id="@+id/et_name_on_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name_on_card" />
+
+    <TextView
+        android:id="@+id/tv_credit_card_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_name_on_card"
+        android:text="Credit Card Type" />
+
+    <EditText
+        android:id="@+id/et_credit_card_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_credit_card_type" />
+
+    <TextView
+        android:id="@+id/tv_credit_card_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_credit_card_type"
+        android:text="Credit Card Number" />
+
+    <EditText
+        android:id="@+id/et_credit_card_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_credit_card_number" />
+
+    <TextView
+        android:id="@+id/tv_expiration_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_credit_card_number"
+        android:text="Expiration date" />
+
+    <LinearLayout
+        android:id="@+id/ll_expiration_date"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tv_expiration_date"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_expire_month"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/et_expire_year"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_card_verificatin_number"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/ll_expiration_date"
+        android:text="Card Verification Number"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/et_card_verificatin_number"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tv_card_verificatin_number"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_pay"
+        android:layout_width="match_parent"
+        android:text="Pay"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

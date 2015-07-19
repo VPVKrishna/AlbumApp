@@ -63,7 +63,6 @@ public class SlideActivity extends Activity {
 
     public void settings(View view){
         Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
-
     }
 
     public void help(View view){
@@ -89,7 +88,7 @@ public class SlideActivity extends Activity {
         FragmentTransaction transaction=getFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment, simpleName);
         if (isWantToBackStack) {
-            transaction.addToBackStack(simpleName);
+            transaction.addToBackStack(null);
         }
         transaction.commit();
     }
